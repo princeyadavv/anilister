@@ -9,9 +9,10 @@ router.get('/', async (req, res) => {
     const user = await users.findOne({ username: req.user.username })
 
     const objectid = new mongoose.Types.ObjectId(user._id);
-    const animefinish = await show.find({ createdBy: objectid}).sort({ rating: -1 });
+    const anime = await show.find({ createdBy: objectid ,type:'ANIME'}).sort({ rating: -1 });
+    const manga = await show.find({ createdBy: objectid,type:'MANGA'}).sort({ rating: -1 });
     return res.render('myprofile', {
-        user, shows: animefinish
+        user,anime,manga
     });
 });
 
