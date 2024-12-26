@@ -30,7 +30,7 @@ router.get('/signup', (req, res) => {
 })
 router.get('/search', (req, res) => {
     const user = req.user
-    res.render('searchpage',{
+    res.render('Searchpage',{
         user
     })
 })
