@@ -48,9 +48,10 @@ router.post('/search', async(req, res) => {
         }
         else {
             const objectId = new mongoose.Types.ObjectId(user.id)
-            const usershows = await shows.find({ createdBy: objectId, status: "FINISHED" }).sort({ rating: -1 })
+            const anime = await shows.find({ createdBy: objectId, type: "ANIME" }).sort({ rating: -1 })
+            const manga = await shows.find({ createdBy: objectId, type: "MANGA" }).sort({ rating: -1 })
             console.log(usershows)
-            return res.render('userprofile', { user: hamarauser, oguser: user, shows: usershows })
+            return res.render('userprofile', { user: hamarauser, oguser: user, anime,manga })
         }
     }
 })
