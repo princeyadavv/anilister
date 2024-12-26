@@ -1,0 +1,66 @@
+<svg id="button" class="w-20 duration-300 h-20  fixed left-[90vw] bottom-[8vh] text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#282825" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd"/>
+</svg>
+<div class=" max-w-xs hidden top-1/4 left-1/2 absolute  mx-auto p-8 border rounded-lg shadow-sm bg-white" id="hidden">
+    <form class="space-y-4 "  id="form" method="POST" action="/shows/addshow">
+        <div>
+            <label for="textInput" class="block text-sm font-medium text-gray-700">Title</label>
+            <input type="text" id="textInput" name="name"
+                class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm   focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter title" />
+        </div>
+
+        <div>
+            <label for="select1" class="block text-sm font-medium text-gray-700">Type</label>
+            <select id="select1"
+                class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" name="type">
+                <option value="ANIME">Anime</option>
+                <option value="MANGA">Manga</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="select2" class="block text-sm font-medium text-gray-700">Status</label>
+            <select id="select2"
+                class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" name="status">
+                <option value="FINISHED">Finished</option>
+                <option value="WATCHLIST">Watchlist</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="rating" class="block text-sm font-medium text-gray-700">rating</label>
+            <input type="number" id="rating" name="rating"
+                class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="range between 1 to 5" />
+        </div>
+        
+
+        <div>
+           <br>
+            <button type="submit" id="submit"
+                class="w-full px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+  document.getElementById('button').addEventListener('click', () => {
+    let hiddenElement = document.getElementById('hidden');
+    let button = document.getElementById('button');
+    
+    if (hiddenElement.style.display === 'none' || hiddenElement.style.display === '') {
+        console.log('yes');
+        hiddenElement.style.display = 'block';  
+        button.style.transform = 'rotate(45deg)';  
+    } else {
+        console.log('no');
+        hiddenElement.style.display = 'none'; 
+        button.style.transform = 'rotate(0deg)'; 
+    }
+});
+
+
+</script>

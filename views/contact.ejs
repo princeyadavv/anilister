@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <%- include('./partials/icon') %>
+
+    <title>Contact us</title>
+
+</head>
+
+<body>
+     <%- include('./partials/nav') %>
+
+
+
+     <section class="bg-gray-50 py-16 px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">Contact Us</h2>
+          <p class="text-xl text-gray-600 mb-8">
+            Have any questions or suggestions? We'd love to hear from you! Reach out to us, and we’ll get back to you as soon as possible.
+          </p>
+          
+          <form action="#" method="POST" action="/contact" class="space-y-8">
+            <div>
+              <label for="name" class="block text-left text-lg font-medium text-gray-700">Full Name</label>
+              <input placeholder="enter name" type="text" id="name" name="name" required class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+      
+            <div>
+              <label for="email" class="block text-left text-lg font-medium text-gray-700">Email Address</label>
+              <input placeholder="enter email" type="email" id="email" name="email" required class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+      
+            <div>
+              <label for="message" class="block text-left text-lg font-medium text-gray-700">Your Message</label>
+              <textarea placeholder="enter message" id="message" name="message" rows="6" required class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+            </div>
+      
+            <div class="flex justify-center">
+              <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700">
+                Send Message
+              </button>
+            </div>
+          </form>
+          
+          <div class="mt-12 text-lg text-gray-600">
+            <p>Or reach us at:</p>
+            <p>Email: <a href="mailto:photography.py04@gmail.com" class="text-blue-600">support@Anilister.com</a></p>
+            <p>Phone: <a href="tel:+8368155341" class="text-blue-600">+1 (234) 567-890</a></p>
+          </div>
+        </div>
+      </section>
+      <%- include('./partials/footer') %>
+
+     <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+
+</body>
+</html>
+

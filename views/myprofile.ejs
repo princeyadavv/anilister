@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <%- include('./partials/head') %>
+        <%- include('./partials/icon') %>
+
+        <title>My Profile</title>
+    </head>
+    
+    <body class="min-h-screen flex bg-[#e5e7eb] flex-col">
+        <%- include('./partials/nav') %>
+        <%- include('./partials/addshow') %>
+
+        <%- include('./partials/footer') %> 
+        <div class="w-1/2 mx-auto px-4 py-8">
+            <div class="flex justify-end">
+              <span id="edit"><svg
+                class="w-6 h-6 text-[#282825]" 
+                aria-hidden="true"
+                id="<%= user.username %>"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke="#282825" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                />
+            </svg>
+            </span>
+                
+            
+            </div>
+        
+        <div class="flex items-center space-x-4 mb-8">
+            
+            <img src="<%= user.profileImg %>" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-blue-500">
+    
+            
+            <div>
+                <h1 class="text-3xl font-semibold text-gray-900"><%= user.firstName %> <%= user.middleName %> <%= user.lastName %></h1>
+                <p class="text-gray-500">@<%= user.username %></p>
+                <p class="mt-2 text-gray-800"><%= user.bio %></p>              
+                      <span class="ml-2 text-gray-700" id="likeCount"><%= user.likes.length %> likes</span>
+
+
+            </div>
+        </div>
+    
+    
+    </div>
+
+    <main class="flex-1 p-6">
+        
+        <% if (locals.shows && locals.shows.length > 0) { %>
+            <div class="flex justify-end">Total: <%= shows.length %></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pb-12 gap-6">
+                <% shows.forEach(show => { %>
+                    <div class="<%=show.color  %> p-4 shadow-md rounded-lg overflow-hidden border border-gray-200">
+                        <svg
+                        class="w-6 h-6 text-gray-800 dark:text-white edit"
+                        id="<%= show.id %>"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                        <div class="p-4 text-center">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-2"><%= show.name %></h2>
+                            <p class="text-lg text-yellow-500  font-semibold"><%- show.stars %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            
+            <p class="text-center text-gray-500 text-xl mt-10">No shows available</p>
+        <% } %>
+    </main>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const edit = document.getElementById('edit')
+        console.log(edit)
+        const editlogos = Array.from(document.getElementsByClassName("edit"));
+        editlogos.forEach((element) => {
+element.addEventListener('click', async () => {
+await editshow(element.id); 
+
+
+
+
+})
+})
+
+edit.addEventListener('click', async () => {
+    console.log('dabgya')
+  await editprofile()
+  });
+        
+    });
+
+    function editshow(show) {
+fetch(`/anime/editshow/${show}`, {
+method: 'GET',
+}).then((response) => {
+window.location.href = `/anime/editshow/${show}`; 
+}).catch(error => {
+console.error('Error:', error);
+});
+}
+ 
+
+async function editprofile(){
+    fetch('/myprofile/editprofile',{
+        method: 'GET',
+    }).then((response) => {
+window.location.href = `/myprofile/editprofile`;
+}).catch(error => {
+console.error('Error:', error);
+});
+}
+const colorcodes = [
+  "bg-orange-700",
+  "bg-green-500",
+  "bg-purple-700",
+  "bg-teal-400",
+  "bg-red-600"
+];
+</script>
+
+</body>
+</html>

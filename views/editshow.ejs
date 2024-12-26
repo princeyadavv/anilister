@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <%- include('./partials/icon') %>
+
+    <title>Edit a show</title>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <%- include('./partials/nav') %>
+    <div class=" max-w-xs  top-1/4 left-1/4 absolute  mx-auto p-8 border rounded-lg shadow-sm bg-white" id="hidden">
+        <form class="space-y-4 "  id="form" method="POST" action="/shows/updateshow">
+            <div class="hidden">
+                <label for="textInput" class="block text-sm font-medium text-gray-700">id</label>
+                <input type="text" id="textInput" name="id"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm   focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter title" value="<%= show.id %>" />
+            </div>
+            <div>
+                <label for="textInput" class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" id="textInput" name="name"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm   focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter title" value="<%= show.name %>" />
+            </div>
+    
+            <div>
+                <label for="select1" class="block text-sm font-medium text-gray-700">Type</label>
+                <select id="select1"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" name="type">
+                    <option value="ANIME" <%= show.type === 'ANIME' ? 'selected' : '' %>>Anime</option>
+                    <option value="MANGA" <%= show.type === 'MANGA' ? 'selected' : '' %>>Manga</option>
+                </select>
+            </div>
+    
+            <div>
+                <label for="select2" class="block text-sm font-medium text-gray-700">Status</label>
+                <select id="select2"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    name="status">
+                    <option value="FINISHED" <%= show.status === 'FINISHED' ? 'selected' : '' %>>Finished</option>
+                    <option value="WATCHLIST" <%= show.status === 'WATCHLIST' ? 'selected' : '' %>>Watchlist</option>
+                </select>
+            </div>
+            
+    
+            <div>
+                <label for="rating" class="block text-sm font-medium text-gray-700">rating</label>
+                <input type="number" id="rating" name="rating"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="range between 1 to 5" value="<%= show.rating %>"/>
+            </div>
+            
+            
+    
+            <div>
+               <br>
+                <button id="delete"
+                    class="w-full px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Delete
+                </button>
+            </div>
+            <div>
+                <button type="submit" id="submit"
+                    class="w-full px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+
+<script>
+const deleteButton = document.getElementById('delete');
+const showid = document.getElementById('textInput').value
+deleteButton.addEventListener('click', async(e) => {
+    e.preventDefault(); 
+  sendDeleteRequest(showid)
+});
+async function sendDeleteRequest(showid){
+    fetch(`/shows/updateshow/${showid}`, {
+  method: 'DELETE'
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to delete');
+    }
+    return response.json(); 
+  })
+  .then(data => console.log('Success:', data))
+  .catch(error => console.error('Error:', error));
+
+}
+
+</script>
+</body>
+</html>

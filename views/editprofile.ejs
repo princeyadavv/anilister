@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <%- include('./partials/icon') %>
+
+    <title>Edit your profile</title>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <%- include('./partials/nav') %>
+    <% if (locals.error) { %>
+      <div class="text-red-500 text-sm mt-2">
+        <%= error %>
+      </div>
+    <% } %>
+    
+    <div class="max-w-xs sm:max-w-md md:max-w-lg top-1/4 left-1/4 absolute mx-auto p-8 border rounded-lg shadow-sm bg-white" id="hidden">
+        <form class="space-y-4" method="POST" action="/myprofile/editprofile">
+            <input type="hidden" name="_method" value="PATCH" />
+           
+            <div>
+                <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                <input type="text" id="firstName" name="firstName"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter first name" value="<%= user.firstName %>" />
+            </div>
+            <div>
+                <label for="middleName" class="block text-sm font-medium text-gray-700">Middle Name</label>
+                <input type="text" id="middleName" name="middleName"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter middle name" value="<%= user.middleName %>" />
+            </div>
+            <div>
+                <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                <input type="text" id="lastName" name="lastName"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter last name" value="<%= user.lastName %>" />
+            </div>
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="username" name="username"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter username" value="<%= user.username %>" />
+            </div>
+            <div>
+                <label for="bio" class="block text-sm font-medium text-gray-700">Bio</label>
+                <input type="text" id="bio" name="bio"
+                    class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter bio" value="<%= user.bio %>" />
+            </div>
+   
+            <div>
+                <button type="submit" id="submit"
+                    class="w-full px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+  </body>
+</html>

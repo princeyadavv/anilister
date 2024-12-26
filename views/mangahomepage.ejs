@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <%- include('./partials/icon') %>
+
+    <title>Manga</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+    
+    <div class="flex bg-[#f7f7f2]">
+        <%- include('./partials/sidebar') %>
+       
+        
+        
+    
+        <div class="flex-grow flex justify-center pt-16 ">
+            <a href="/manga/watchlist" class="w-[30vw] h-[50vh] bg-blue-500 rounded-xl flex justify-center items-center text-white font-bold mx-10  relative overflow-hidden transition-transform duration-300 transform hover:-translate-x-2 hover:translate-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.7)]">
+                <img src="/abyss.webp" alt="Watchlist" class="rounded-xl object-cover w-full h-full absolute">
+                <span class="relative z-10 text-[#fbff00] text-6xl font-extrabold tracking-widest  drop-shadow-[0_0_40px_#fbff00]">
+                    Watchlist
+                </span>
+            </a>
+        
+            <a href="/manga/finish" class="w-[30vw] h-[50vh] bg-blue-500 rounded-xl flex justify-center items-center text-white font-bold mx-10  relative overflow-hidden transition-transform duration-300 transform hover:-translate-x-2 hover:translate-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.7)]">
+                <img src="/narusasu.jpeg" alt="Finished" class="rounded-xl object-cover w-full h-full absolute">
+                <span class="relative z-10 text-[#1EE700] text-6xl font-extrabold tracking-widest drop-shadow-[0_0_20px_#1EE700] ">
+                    Finished
+                </span>
+            </a>
+        </div>
+        
+    </div>
+    
+
+
+
+
+
+    <%- include('./partials/addshow') %>
+      
+      
+
+    <%- include('./partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+
+    <script>
+
+
+    
+    </script>
+</body>
+
+</html>

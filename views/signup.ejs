@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <%- include('./partials/icon') %>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Signup</title>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 font-poppins">
+    <section class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <a href="/" class="fixed top-4 left-4 z-10 flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
+            <img class="w-8 h-8 " src="/logo.png" alt="logo">
+            niLister
+        </a>
+        <div class="w-full bg-white rounded-lg shadow dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 sm:p-8">
+                <h1 class="text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
+                    Create an account
+                </h1>
+                <form class="space-y-4" action="/signup" method="POST">
+                    <div>
+                        <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            First Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" name="firstName" id="firstName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Enter your first name" required>
+                    </div>
+
+                    <div>
+                        <label for="middlename" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Middle Name (Optional)
+                        </label>
+                        <input type="text" name="middleName" id="middleName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Enter your middle name">
+                    </div>
+
+                    <div>
+                        <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Last Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" name="lastName" id="lastName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Enter your last name" required>
+                    </div>
+
+                    <div>
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Username <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Choose a username" required>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Password <span class="text-red-500">*</span>
+                        </label>
+                        <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••" required>
+                    </div>
+
+                
+
+
+
+                    <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Create an Account
+                    </button>
+
+                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                        Already have an account? <a href="/login" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Login here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

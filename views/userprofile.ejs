@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <%- include('./partials/head') %>
+    <%- include('./partials/icon') %>
+
+    <title><%= oguser.username %></title>
+</head>
+    
+<body class="min-h-screen flex bg-[#e5e7eb] flex-col">
+    <nav class="bg-[#282825] text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="/" class="flex items-center space-x-1 rtl:space-x-reverse">
+            <img src="/logo.png" class="h-8" alt="niLister Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap">niLister</span>
+          </a>
+      
+          <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+     
+             <% if (locals.user) { %>
+              
+              <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-10 h-10 rounded-full" src=<%= user.profileImg %> alt="User photo">
+              </button>
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-600" id="user-dropdown">
+              <div class="px-4 py-3">
+                <span class="block text-sm text-gray-700 dark:text-white"><%= user.firstName %> <%= user.middleName %> <%= user.lastName %></span>
+                <span class="block text-sm text-gray-500 truncate dark:text-gray-400">@<%= user.username %></span>
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                <li><a href="/myprofile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a></li>
+                <li><a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a></li>
+               
+                <li><a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a></li>
+              </ul>
+            </div>
+             <% } %>
+    
+      
+            
+            
+            <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-yellow-400 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+            </button>
+          </div>                     
+      
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4   border border-gray-100 rounded-lg bg-[#282825] !md:bg-[#282825] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+              <li><a href="/" class="block py-2 px-3 text-white rounded  md:p-0">Home</a></li>
+              <li><a href="/about" class="block py-2 px-3 text-white rounded  md:p-0">About</a></li>
+              <li><a href="/search" class="block py-2 px-3 text-white rounded  md:p-0">Search</a></li>
+              
+              <li><a href="/contact" class="block py-2 px-3 text-white rounded  md:p-0">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+    <%- include('./partials/footer') %> 
+    <div class="w-1/2 mx-auto px-4 py-8">
+        <div class="flex justify-end"></div>
+        <div class="flex items-center space-x-4 mb-8">
+            <img src="<%= oguser.profileImg %>" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-blue-500">
+        
+            <div>
+                <h1 class="text-3xl font-semibold text-gray-900"><%= oguser.firstName %> <%= oguser.middleName %> <%= oguser.lastName %></h1>
+                <p class="text-gray-500">@<%= oguser.username %></p>
+                <p class="mt-2 text-gray-800"><%= oguser.bio %></p>
+                <div class="flex items-center mt-4">
+                    <% if (user.liked && oguser && user.liked.map(id => id.toString()).includes(oguser.id.toString())) { %>
+                        <button class="like-toggle-button text-blue-500 hover:text-blue-700 font-semibold" data-user-id="<%= oguser.id %>" data-liked="true">Unlike</button>
+                    <% } else { %>
+                        <button class="like-toggle-button text-blue-500 hover:text-blue-700 font-semibold" data-user-id="<%= oguser.id %>" data-liked="false">Like</button>
+                    <% } %>
+                    <span class="ml-2 text-gray-700" id="likeCount"><%= oguser.likes.length %> likes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-1 p-6">
+        
+        <% if (locals.shows && locals.shows.length > 0) { %>
+            <div class="flex justify-end">Total: <%= shows.length %></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pb-12 gap-6">
+              <% shows.forEach(show => { %>
+                    <div class="<%=show.color  %> p-4 shadow-md rounded-lg overflow-hidden border border-gray-200">
+                     
+                        <div class="p-4 text-center">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-2"><%= show.name %></h2>
+                            <p class="text-lg text-yellow-500  font-semibold"><%- show.stars %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p class="text-center text-gray-500 text-xl mt-10">No shows available</p>
+        <% } %>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
+
+    <script>
+        document.querySelectorAll('.like-toggle-button').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const userId = event.target.getAttribute('data-user-id');
+                const liked = event.target.getAttribute('data-liked') === 'true';
+                const newLikedStatus = liked ? 'Unlike' : 'Like';
+
+                const response = await fetch(`/users/likedto/${userId}`, {
+                    method: 'POST',
+                    body: JSON.stringify({ liked: !liked }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                window.location.href = '/users/<%= oguser.username %>'
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>
