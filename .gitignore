@@ -30,7 +30,6 @@ yarn.lock
 # Build or output directories
 dist/
 build/
-public/css/output.css
 
 # IDE and editor settings
 .vscode/
