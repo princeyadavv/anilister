@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const secret = "bankai katenkyokotsu karamatsu shinju!"
+const secret = process.env.secret
 
 function createToken(user){
     const payload= {

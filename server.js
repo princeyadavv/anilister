@@ -18,8 +18,7 @@ const {checkAuthentication,restrictTo}=require('./middlewares/auth')
 
 const app = express()
 
-mongoose.connect(`mongodb+srv://photographypy04:ZXsRTXHXLHhB3qNs@cluster0.uijuh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-`).then(()=> console.log('mongo connected')).catch(err=> console.log(err))
+mongoose.connect(process.env.mongoUri).then(()=> console.log('mongo connected')).catch(err=> console.log(err))
 
 
 app.use(express.static('public'))
