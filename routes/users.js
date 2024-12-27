@@ -33,7 +33,6 @@ router.get('/:username', async (req, res) => {
 })
 router.post('/likedto/:id', async (req, res) => {
     try {
-        console.log('request aagayi')
         const id = req.params.id;
         const currentuser = req.user;
         const { liked } = req.body;

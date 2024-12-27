@@ -47,6 +47,5 @@ function saveImageWithLetter(firstName,username) {
 }
 
 for (let i = 'a'.charCodeAt(0); i <= 'z'.charCodeAt(0); i++) {
-  console.log();
   saveImageWithLetter(String.fromCharCode(i),String.fromCharCode(i))
 }

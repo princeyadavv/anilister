@@ -52,11 +52,9 @@
     let button = document.getElementById('button');
     
     if (hiddenElement.style.display === 'none' || hiddenElement.style.display === '') {
-        console.log('yes');
         hiddenElement.style.display = 'block';  
         button.style.transform = 'rotate(45deg)';  
     } else {
-        console.log('no');
         hiddenElement.style.display = 'none'; 
         button.style.transform = 'rotate(0deg)'; 
     }

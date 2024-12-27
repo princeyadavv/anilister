@@ -32,7 +32,6 @@ async function handleLogin(req, res) {
       if (err) {
         return res.render('login',{error:'incorrect password'})
       } else if (isMatch) {
-        console.log(User);
         const token = createToken(User)
         return res.cookie('token',token).redirect('/')
 

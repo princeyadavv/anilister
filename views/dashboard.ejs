@@ -56,12 +56,12 @@
 
       <div
         id="likesModal"
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden"
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden overflow-y-auto"
       >
         <div class="flex justify-center items-center min-h-screen">
-          <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+          <div class="bg-white rounded-lg shadow-lg p-6 w-96 h-96">
             <h2 class="text-2xl font-semibold text-gray-800">Your Likes</h2>
-            <ul class="mt-4 space-y-2">
+            <ul class="mt-4 space-y-2 overflow-y-auto h-72">
               <% user.likes.forEach(function(like) { %>
               <li class="p-4 bg-gray-50 rounded-lg shadow hover:bg-blue-50">
                 <a
@@ -85,14 +85,14 @@
 
       <div
         id="likedModal"
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden"
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden overflow-y-auto"
       >
         <div class="flex justify-center items-center min-h-screen">
-          <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+          <div class="bg-white rounded-lg shadow-lg p-6 w-96 h-96">
             <h2 class="text-2xl font-semibold text-gray-800">
               Your Liked Animes
             </h2>
-            <ul class="mt-4 space-y-2">
+            <ul class="mt-4 space-y-2 overflow-y-auto h-72">
               <% user.liked.forEach(function(liked) { %>
               <li class="p-4 bg-gray-50 rounded-lg shadow hover:bg-blue-50">
                 <a
@@ -116,14 +116,14 @@
 
       <div
         id="viewsModal"
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden"
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden overflow-y-auto"
       >
         <div class="flex justify-center items-center min-h-screen">
-          <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+          <div class="bg-white rounded-lg shadow-lg p-6 w-96 h-96">
             <h2 class="text-2xl font-semibold text-gray-800">
               Your Recent Views
             </h2>
-            <ul class="mt-4 space-y-2">
+            <ul class="mt-4 space-y-2 overflow-y-auto h-72">
               <% user.views.forEach(function(view) { %>
               <li class="p-4 bg-gray-50 rounded-lg shadow hover:bg-blue-50">
                 <a
