@@ -39,7 +39,7 @@
                     class="mt-1 block w-full px-2 py-1 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     name="status">
                     <option value="FINISHED" <%= show.status === 'FINISHED' ? 'selected' : '' %>>Finished</option>
-                    <option value="WATCHLIST" <%= show.status === 'WATCHLIST' ? 'selected' : '' %>>Watchlist</option>
+                    <option value="WATCHLIST" <%= show.status === 'WATCHLIST' ? 'selected' : '' %>>Ongoing</option>
                 </select>
             </div>
             
@@ -87,7 +87,7 @@ async function sendDeleteRequest(showid){
     }
     return response.json(); 
   })
-  .then(data => console.log('Success:', data))
+  .then(window.location.href='/')
   .catch(error => console.error('Error:', error));
 
 }
