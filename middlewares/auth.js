@@ -8,7 +8,6 @@ function checkAuthentication(){
         try{
             const payload = VerifyUser(tokenValue)
             req.user = payload
-            console.log(payload)
             return next()
         } catch(err){
             return  next()
