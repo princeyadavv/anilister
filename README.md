@@ -62,8 +62,8 @@ To set up the Anime Tracking Platform locally, follow these steps:
 3. **Set up environment variables:**
     Create a `.env` file in the root directory and add the following:
     ```
-    MONGO_URI=your_mongo_connection_string
-    JWT_SECRET=your_jwt_secret
+    mongoUri=your_mongo_connection_string
+    secret=your_jwt_secret
     ```
 
 4. **Start the server:**
@@ -72,7 +72,7 @@ To set up the Anime Tracking Platform locally, follow these steps:
     ```
 
 5. **Access the platform:**
-    Open your browser and navigate to `http://localhost:3000`.
+    Open your browser and navigate to `http://localhost:5000`.
 
 ---
 
